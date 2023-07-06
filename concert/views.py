@@ -18,7 +18,7 @@ def signup(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         try:
-            user = User.objects.get(username=username).first()
+            user = User.objects.filter(username=username).first()
             if user:
                 return render(request, "signup.html", {"form": SignUpForm, "message":"user already exist"})
             else:
