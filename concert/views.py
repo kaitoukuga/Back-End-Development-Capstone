@@ -68,7 +68,7 @@ def logout_view(request):
 
 def concerts(request):
     if request.user.is_authenticated:
-        list_of_concert = []
+        lst_of_concert = []
         concert_objects = Concert.objects.all()
         for item in concert_objects:
             try:
@@ -80,7 +80,7 @@ def concerts(request):
                 "concert": item,
                 "status": status
             })
-        return render(request, "concerts.html", {"concerts": list_of_concert})
+        return render(request, "concerts.html", {"concerts": lst_of_concert})
     else:
         return HttpResponseRedirect(reverse("login"))
 
